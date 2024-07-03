@@ -1,0 +1,987 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Networkx - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Networkx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    教程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            教程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    下一代internet
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            下一代internet
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    方案一
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    方案二
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nextlunwen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    论文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    man
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            man
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    py教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networkx.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    networkx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关于我
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    英语
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            英语
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../English/First/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一天
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../English/2005/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 作文1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 创建图
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 添加节点和边
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 节点和边的属性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 图的基本操作
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 图的绘制
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 图的算法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 读取和写入图
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. 应用示例
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networkx" class="md-nav__link">
+    <span class="md-ellipsis">
+      NetworkX的优势
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      进阶使用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Networkx</h1>
+
+<p>NetworkX是一个Python库，用于创建、操作和研究复杂网络的结构、动态和功能。它提供了一种灵活和高效的方式来处理图形（graph），特别是在数据科学、社交网络分析、生物网络分析等领域中。以下是对NetworkX库的详细介绍：</p>
+<h3 id="1">1. 安装</h3>
+<p>首先，你可以通过以下命令安装NetworkX：</p>
+<pre><code class="language-sh">pip install networkx
+</code></pre>
+<h3 id="2">2. 基本概念</h3>
+<ul>
+<li><strong>Graph（图）</strong>: NetworkX支持无向图、有向图、多重图等。</li>
+<li><strong>Node（节点）</strong>: 图的基本单元，可以包含任意的Python对象。</li>
+<li><strong>Edge（边）</strong>: 节点之间的连接，可以包含属性数据。</li>
+</ul>
+<h3 id="3">3. 创建图</h3>
+<p>你可以创建不同类型的图，例如无向图、有向图等。</p>
+<pre><code class="language-python">import networkx as nx
+
+# 创建一个空的无向图
+G = nx.Graph()
+
+# 创建一个空的有向图
+DG = nx.DiGraph()
+</code></pre>
+<h3 id="4">4. 添加节点和边</h3>
+<p>可以通过多种方式添加节点和边。</p>
+<pre><code class="language-python"># 添加单个节点
+G.add_node(1)
+
+# 添加多个节点
+G.add_nodes_from([2, 3, 4])
+
+# 添加单条边
+G.add_edge(1, 2)
+
+# 添加多条边
+G.add_edges_from([(2, 3), (3, 4)])
+</code></pre>
+<h3 id="5">5. 节点和边的属性</h3>
+<p>可以为节点和边添加属性。</p>
+<pre><code class="language-python"># 为节点添加属性
+G.nodes[1]['label'] = 'A'
+
+# 为边添加属性
+G[1][2]['weight'] = 4.2
+</code></pre>
+<h3 id="6">6. 图的基本操作</h3>
+<p>可以查询节点和边的数量、邻居等信息。</p>
+<pre><code class="language-python"># 获取节点数量
+print(G.number_of_nodes())
+
+# 获取边数量
+print(G.number_of_edges())
+
+# 获取节点的邻居
+print(list(G.neighbors(1)))
+</code></pre>
+<h3 id="7">7. 图的绘制</h3>
+<p>可以使用Matplotlib绘制图形。</p>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+
+nx.draw(G, with_labels=True)
+plt.show()
+</code></pre>
+<h3 id="8">8. 图的算法</h3>
+<p>NetworkX提供了丰富的图算法，包括路径、中心性、团体检测等。</p>
+<pre><code class="language-python"># 最短路径
+shortest_path = nx.shortest_path(G, source=1, target=4)
+
+# 计算节点的度中心性
+degree_centrality = nx.degree_centrality(G)
+
+# 检测图中的连通分量
+connected_components = list(nx.connected_components(G))
+</code></pre>
+<h3 id="9">9. 读取和写入图</h3>
+<p>可以将图读写为多种格式。</p>
+<pre><code class="language-python"># 将图写入GML文件
+nx.write_gml(G, 'graph.gml')
+
+# 从GML文件读取图
+G = nx.read_gml('graph.gml')
+</code></pre>
+<h3 id="10">10. 应用示例</h3>
+<p>NetworkX在许多实际问题中都有应用，例如社交网络分析、生物信息学、复杂网络等。例如：
+- <strong>社交网络分析</strong>: 研究社交网络中的节点（用户）和边（关系）的结构和动态。</p>
+<ol>
+<li><strong>社交网络分析</strong>:</li>
+<li>
+<p><strong>节点和边的中心性</strong>: 计算网络中哪些节点或边更为重要。
+     ```python
+     import networkx as nx</p>
+<p># 创建一个示例社交网络图
+ G = nx.Graph()
+ G.add_edges_from([(1, 2), (1, 3), (2, 3), (3, 4), (4, 5)])</p>
+<p># 计算度中心性
+ degree_centrality = nx.degree_centrality(G)
+ print("Degree Centrality:", degree_centrality)</p>
+<p># 计算接近中心性
+ closeness_centrality = nx.closeness_centrality(G)
+ print("Closeness Centrality:", closeness_centrality)</p>
+<p># 计算中介中心性
+ betweenness_centrality = nx.betweenness_centrality(G)
+ print("Betweenness Centrality:", betweenness_centrality)
+ ```</p>
+</li>
+<li>
+<p><strong>生物信息学</strong>:</p>
+</li>
+<li>
+<p><strong>基因网络</strong>: 分析基因之间的相互作用，寻找关键基因或基因模块。
+     ```python
+     import networkx as nx</p>
+<p># 创建一个示例基因网络图
+ G = nx.Graph()
+ G.add_edges_from([('GeneA', 'GeneB'), ('GeneA', 'GeneC'), ('GeneB', 'GeneC'), ('GeneC', 'GeneD')])</p>
+<p># 检测连通分量
+ connected_components = list(nx.connected_components(G))
+ print("Connected Components:", connected_components)</p>
+<p># 检测图中的社团结构
+ communities = list(nx.community.label_propagation_communities(G))
+ print("Communities:", communities)
+ ```</p>
+</li>
+<li>
+<p><strong>复杂网络</strong>:</p>
+</li>
+<li>
+<p><strong>网络鲁棒性分析</strong>: 研究网络在节点或边被删除时的行为，评估网络的鲁棒性。
+     ```python
+     import networkx as nx</p>
+<p># 创建一个示例复杂网络图
+ G = nx.erdos_renyi_graph(10, 0.3)</p>
+<p># 删除一个节点后的图
+ G.remove_node(0)
+ # 计算删除节点后的连通分量
+ new_components = list(nx.connected_components(G))
+ print("New Connected Components after removing node 0:", new_components)
+ ```</p>
+</li>
+</ol>
+<h3 id="networkx">NetworkX的优势</h3>
+<ul>
+<li><strong>灵活性</strong>: 支持多种图类型（无向图、有向图、多重图等）以及丰富的属性和自定义功能。</li>
+<li><strong>丰富的算法</strong>: 提供了大量内置的图算法，方便进行复杂网络分析。</li>
+<li><strong>易于使用</strong>: 具有简洁明了的API，易于学习和使用。</li>
+<li><strong>可视化能力</strong>: 可以方便地与Matplotlib结合，进行图的可视化。</li>
+</ul>
+<h3 id="_1">进阶使用</h3>
+<ol>
+<li><strong>大规模图处理</strong>:</li>
+<li>
+<p>对于非常大的图，NetworkX可能不够高效。这时可以考虑使用其他库，如Graph-tool或基于分布式计算的图处理框架（如Apache Spark GraphX）。</p>
+</li>
+<li>
+<p><strong>集成其他工具</strong>:</p>
+</li>
+<li>可以与Pandas结合使用，进行数据分析和处理。</li>
+<li>与SciPy结合使用，进行高级的数学和统计分析。
+   ```python
+   import pandas as pd
+   import networkx as nx</li>
+</ol>
+<p># 从Pandas DataFrame创建图
+   df = pd.DataFrame({'from': [1, 2, 3], 'to': [2, 3, 4]})
+   G = nx.from_pandas_edgelist(df, 'from', 'to')</p>
+<p>print("Graph from DataFrame:", G.edges)
+   ```</p>
+<ol>
+<li><strong>图数据库集成</strong>:</li>
+<li>可以与图数据库（如Neo4j）结合使用，进行更复杂的图数据存储和查询。
+   ```python
+   from py2neo import Graph</li>
+</ol>
+<p># 连接到Neo4j数据库
+   graph_db = Graph("bolt://localhost:7687", auth=("neo4j", "password"))</p>
+<p># 从Neo4j读取图数据
+   query = "MATCH (n)-[r]-&gt;(m) RETURN n.name, m.name"
+   data = graph_db.run(query).data()</p>
+<p># 创建NetworkX图
+   G = nx.Graph()
+   for edge in data:
+       G.add_edge(edge['n.name'], edge['m.name'])</p>
+<p>print("Graph from Neo4j:", G.edges)
+   ```</p>
+<h3 id="_2">总结</h3>
+<p>NetworkX是一个功能强大的图处理和分析工具，广泛应用于多个领域。通过NetworkX，你可以方便地创建、操作和分析图数据，利用其丰富的算法库解决各种复杂网络问题。此外，通过与其他Python库的集成，可以进一步扩展其功能，实现更多高级应用。</p>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import networkx as nx
+
+# 创建一个空的有向图
+G = nx.DiGraph()
+
+# 添加节点和边
+# 路由器和交换机
+routers = [&quot;R1&quot;, &quot;R2&quot;, &quot;R3&quot;]
+switches = [&quot;S1&quot;, &quot;S2&quot;, &quot;S3&quot;]
+hosts_A = [&quot;H1_A&quot;, &quot;H2_A&quot;]
+hosts_B = [&quot;H1_B&quot;, &quot;H2_B&quot;]
+hosts_C = [&quot;H1_C&quot;, &quot;H2_C&quot;]
+
+# 添加路由器、交换机、主机之间的连接
+G.add_edges_from([
+    (&quot;R1&quot;, &quot;S1&quot;), (&quot;R2&quot;, &quot;S2&quot;), (&quot;R3&quot;, &quot;S3&quot;),
+    (&quot;S1&quot;, &quot;H1_A&quot;), (&quot;S1&quot;, &quot;H2_A&quot;),
+    (&quot;S2&quot;, &quot;H1_B&quot;), (&quot;S2&quot;, &quot;H2_B&quot;),
+    (&quot;S3&quot;, &quot;H1_C&quot;), (&quot;S3&quot;, &quot;H2_C&quot;),
+])
+
+# 添加路由器之间的连接（形成三角形拓扑）
+G.add_edges_from([
+    (&quot;R1&quot;, &quot;R2&quot;), (&quot;R2&quot;, &quot;R1&quot;),
+    (&quot;R1&quot;, &quot;R3&quot;), (&quot;R3&quot;, &quot;R1&quot;),
+    (&quot;R2&quot;, &quot;R3&quot;), (&quot;R3&quot;, &quot;R2&quot;),
+])
+
+# 设置节点的位置
+pos = {
+    &quot;R1&quot;: (0, 1), &quot;R2&quot;: (2, 1), &quot;R3&quot;: (1, 0),
+    &quot;S1&quot;: (0, 2), &quot;S2&quot;: (2, 2), &quot;S3&quot;: (1, -1),
+    &quot;H1_A&quot;: (-0.5, 2.5), &quot;H2_A&quot;: (0.5, 2.5),
+    &quot;H1_B&quot;: (1.5, 2.5), &quot;H2_B&quot;: (2.5, 2.5),
+    &quot;H1_C&quot;: (0.5, -1.5), &quot;H2_C&quot;: (1.5, -1.5),
+}
+
+# 绘制网络拓扑图
+plt.figure(figsize=(10, 8))
+nx.draw(G, pos, with_labels=True, node_size=3000, node_color=&quot;skyblue&quot;, font_size=10, font_weight=&quot;bold&quot;, arrowsize=20, edge_color=&quot;gray&quot;)
+plt.title(&quot;IPv6 Network Topology with EIGRP, SLAAC, DHCPv6, Firewall, and IPsec&quot;)
+plt.show()
+
+</code></pre>
+<p>这是根据你所描述的实验环境生成的IPv6网络拓扑图。图中展示了三个子网（A、B、C），每个子网包括一个路由器、一个交换机和两个终端设备。路由器之间形成一个三角形拓扑，以便于测试EIGRP for IPv6的路由更新和故障恢复功能。
+<img alt="man" src="../../images/net.png" />
+- <strong>R1, R2, R3</strong>：路由器
+- <strong>S1, S2, S3</strong>：交换机
+- <strong>H1_A, H2_A, H1_B, H2_B, H1_C, H2_C</strong>：终端设备</p>
+<p>路由器之间的连接形成了核心网络部分，每个子网内的终端设备通过交换机连接到对应的路由器。</p>
+<p>在这个拓扑基础上，你可以配置EIGRP for IPv6、SLAAC、DHCPv6、防火墙和IPsec等功能，并进行实验分析。希望这个拓扑图能够帮助你更好地理解和实现实验目标。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
